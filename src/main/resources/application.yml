@@ -1,6 +1,29 @@
 spring:
   application:
     name: catalog-service
+  config:
+    import: "optional:configserver:"
+  datasource:
+    username: ymshin
+    password: ymshin
+    url: jdbc:postgresql://localhost:5432/polardb_catalog
+    hikari:
+      connection-timeout: 2000
+      maximum-pool-size: 5
+  sql:
+    init:
+      mode: always
+  cloud:
+    config:
+      uri: http://localhost:8888
+      request-connect-timeout: 5000 #설정 서버에 연결될 때까지 기다리는 시간(밀리초)
+      request-read-timeout:  5000 #설정 서버에서 설정 데이터를 읽을 때까지 기다리는 시간(밀리초)
+      fail-fast: false
+      retry:
+        initial-interval: 1000 # 설정 서버 연결 실패를 치명적 오류로 인식
+        max-attempts: 6 #시도의 최대 횟수
+        max-interval: 2000 #재시도 지연 최대 시간
+        multiplier: 1.1 #지연 시간 계산 승수
 server:
   port: 9001
   tomcat:
@@ -9,3 +32,12 @@ server:
     threads:
       max: 50
       min-spare: 5    
+polar:
+  greeting: 도서 카탈로그에 오신 것을 환영합니다!
+  testdata:
+    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
