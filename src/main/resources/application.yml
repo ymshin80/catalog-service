@@ -10,9 +10,6 @@ spring:
     hikari:
       connection-timeout: 2000
       maximum-pool-size: 5
-  sql:
-    init:
-      mode: always
   cloud:
     config:
       uri: http://localhost:8888
@@ -35,7 +32,7 @@ server:
 polar:
   greeting: 도서 카탈로그에 오신 것을 환영합니다!
   testdata:
-    enabled: true
+    enabled: false
 management:
   endpoints:
     web:
