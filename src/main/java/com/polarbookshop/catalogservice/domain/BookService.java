@@ -1,8 +1,5 @@
 package com.polarbookshop.catalogservice.domain;
 
-import java.util.Optional;
-import java.util.function.Function;
-
 import org.springframework.stereotype.Service;
 
 @Service
@@ -44,6 +41,7 @@ public class BookService {
 						book.title(),
 						book.author(),
 						book.price(),
+						existingBook.publisher(),
 						existingBook.createdDate(),
 						existingBook.lastModifiedDate(),
 						existingBook.version()

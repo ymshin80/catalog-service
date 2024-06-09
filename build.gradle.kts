@@ -48,6 +48,10 @@ tasks.withType<Test> {
 tasks.bootRun.configure {
   systemProperty("spring.profiles.active", "testdata")
 }
+tasks.bootBuildImage {
+   imageName= "${project.name}"
+   environment = mapOf("BP_JVM_VERSION" to "17.*")
+}
 
 dependencyManagement {
   imports {

@@ -32,7 +32,7 @@ server:
 polar:
   greeting: 도서 카탈로그에 오신 것을 환영합니다!
   testdata:
-    enabled: false
+    enabled: true
 management:
   endpoints:
     web:
